@@ -1,0 +1,5 @@
+/* Tailwind v3: базовый reset + утилиты.
+   Импортируется в popup; в страницы (content script) не попадает. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
