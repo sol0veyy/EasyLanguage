@@ -1,5 +1,12 @@
 <script lang="ts" setup>
 import HelloWorld from '@/components/HelloWorld.vue';
+import { translate } from '@/api/translate';
+import { useQuery } from '@tanstack/vue-query';
+
+const { data: translations } = useQuery({
+  queryKey: ['translate'],
+  queryFn: () => translate('text'),
+});
 </script>
 
 <template>
@@ -11,7 +18,7 @@ import HelloWorld from '@/components/HelloWorld.vue';
       <img src="@/assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="WXT + Vue" />
+  <HelloWorld v-if="translations" :msg="translations[0]?.text" />
 </template>
 
 <style scoped>
